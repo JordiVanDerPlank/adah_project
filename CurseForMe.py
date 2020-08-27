@@ -1,16 +1,3 @@
-import speech_recognition as sr
-import random
-import triggerWords
-import webbrowser
-import numpy
-
-from tkinter import *
-
-# Initialize the recognizer
-r = sr.Recognizer()
-
-import socket, string, threading, cursewords, time
-
 global NICK, PASS
 
 HOST = "irc.twitch.tv"
