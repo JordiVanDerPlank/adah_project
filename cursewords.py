@@ -88,7 +88,6 @@ def ChatRespond(username, text):
             "who is the best streamer?" : "that would be the shelfman",
             "who is the best streamer" : "that would be the shelfman",
             "tell me a joke" : "What kind of key doesn't open a lock?                           A monkey",
-            "kaas" : "bitch please",
 
             # Actual cursing
             "son of a": "son of a very nice woman, that raised you beautifully",
