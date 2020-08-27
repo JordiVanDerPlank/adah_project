@@ -44,6 +44,7 @@ chatWordsToActivate = [
     "i hate myself",
     "tell me a joke",
     "guess who's back",
+    "kaas",
 
     # Actual cursing
     "son of a",
