@@ -43,7 +43,7 @@ chatWordsToActivate = [
     "who is the best streamer",
     "i hate myself",
     "tell me a joke",
-    "guess who's back"
+    "guess who's back",
 
     # Actual cursing
     "son of a",
