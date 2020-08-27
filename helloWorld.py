@@ -1,2 +1,2 @@
-import setup.py
+import setup
 print("hello world")
