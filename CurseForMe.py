@@ -224,6 +224,13 @@ def checkMessages():
                             cursewords.SpeakText("Well fuck you too, " + username)
                         if (cursewords.angerLevel == 3):
                             cursewords.SpeakText(username + ", you motherfucker! I'll fuck you up!")
+                    if message == "i like you adah":
+                        if (cursewords.angerLevel == 1):
+                            cursewords.SpeakText("I like you too " + username)
+                        if (cursewords.angerLevel == 2):
+                            cursewords.SpeakText("What's not too like, " + username)
+                        if (cursewords.angerLevel == 3):
+                            cursewords.SpeakText("Stop being such a kiss ass " + theshelfman)
 
                     # ANGER CONTROL BY MODS
                     if message in triggerWords.angerControl and (username == "bootlessbooky" or username == "theshelfman" or username == NICK or userMod or "mod" in userBadges[1]):
