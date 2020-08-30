@@ -422,7 +422,7 @@ def restartFalse ():
 
         #INVALID CAP COMMAND
         # s.send(bytes("CAP #theshelfman : REQ :twitch.tv/tags \r\n", "UTF-8"))
-        s.send(bytes("CAP REQ :twitch.tv/tags \r\n", "UTF-8"))
+        # s.send(bytes("CAP REQ :twitch.tv/tags \r\n", "UTF-8"))
 
 
         # s.send(":tmi.twitch.tv CAP * ACK :twitch.tv/tags")
