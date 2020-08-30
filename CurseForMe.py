@@ -267,12 +267,12 @@ def checkMessages():
                         cursewords.SpeakText(str(newList) + "said back words, is " + str(wordsFlipped))
 
 
-                    greetings = ["hello", "hi", "heya", "hey", "hiya", "sup", "what's up", "whatsup", "whats up", "yo"]
+                    greetings = ["hello adah", "hi adah", "heya adah", "hey adah", "hiya adah", "sup adah", "what's up adah", "whatsup adah", "whats up adah", "yo adah"]
                     if message in greetings and cooldownOn == False:
-                        cooldownOn = True
+                        #cooldownOn = True
                         # thread3 = threading.Thread(target=turnoffCooldown)
-                        thread3 = threading.Timer(60, turnoffCooldown)
-                        thread3.start()
+                        #thread3 = threading.Timer(60, turnoffCooldown)
+                        #thread3.start()
                         cursewords.ChatRespond(username, "hello")
                     else:
                         # for each trigger word/sentence
