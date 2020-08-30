@@ -113,7 +113,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you" : "I am flattered, but no thank you",
+            "i love you adah" : "I am flattered, but no thank you",
 
             "rip" : "Let me guess. Grugsey died again?",
             "rest in peace" : "Let me guess. Grugsey died again?"
@@ -168,7 +168,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you": "fuck off I only love BootlessBooky",
+            "i love you adah": "fuck off I only love BootlessBooky",
 
             "rip": "Let me guess. Grugsey died again?",
             "rest in peace": "Let me guess. Grugsey died again?"
@@ -221,7 +221,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you": "fuck off I only love BootlessBooky",
+            "i love you adah": "fuck off I only love BootlessBooky",
 
             "rip": "Let me guess. Grugsey died again?",
             "rest in peace": "Let me guess. Grugsey died again?"
@@ -284,7 +284,7 @@ def BookyRespond(username, text):
         "peace": "Bye " + username + ". I hope you have a great day",
 
         # Love
-        "i love you": "I love you too, but don't tell your girlfriend",
+        "i love you adah": "I love you too, but don't tell your girlfriend",
 
         "rip": "Let me guess. Grugsey died again?",
         "rest in peace": "Let me guess. Grugsey died again?"
