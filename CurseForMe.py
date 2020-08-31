@@ -239,6 +239,10 @@ def checkMessages():
 
                     if (message == "what time is it" or message == "what's your time"):
                         cursewords.SpeakText("Currently it is " + time.strftime("%I:%M", time.localtime()) + " for " + NICK)
+                        
+                    if message == "rickroll" and NICK == "theshelfman":
+                        cursewords.SpeakText("I'm sorry, theshelfman, but " + username + " made me do this")
+                        webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
 
                     sayBackwardTriggers = ["backwards", "say", "backwards?"]
                     countWordsInMesage = 0
