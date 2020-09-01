@@ -221,7 +221,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah": "Fuck off " + username",
+            "i love you adah": "Fuck off " + username,
 
             "rip": "Let me guess. Grugsey died again?",
             "rest in peace": "Let me guess. Grugsey died again?"
