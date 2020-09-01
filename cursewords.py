@@ -88,6 +88,7 @@ def ChatRespond(username, text):
             "who is the best streamer?" : "that would be the shelfman",
             "who is the best streamer" : "that would be the shelfman",
             "tell me a joke" : "What kind of key doesn't open a lock?                           A monkey",
+            "guess who's back" : "Guess who's back?     Back again.     " + username + "is back. Tell a friend",
 
             # Actual cursing
             "son of a": "son of a very nice woman, that raised you beautifully",
@@ -143,6 +144,7 @@ def ChatRespond(username, text):
             "who is the best streamer": "that would be the shelfman",
             "who is the best streamer?": "that would be the shelfman",
             "tell me a joke": "your life is a joke     " + username,
+            "guess who's back" : "Guess who's back?     Back again.     " + username + "is back. Tell a friend",
 
             # Actual cursing
             "son of a": "son of a bitch",
@@ -196,6 +198,7 @@ def ChatRespond(username, text):
             "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelffish",
             "who is the best streamer": "that would be the shelfman",
             "tell me a joke": "go fuck yourself " + username,
+            "guess who's back" : "Guess who's back?     Back again.     " + username + "is back. Tell a friend",
 
             # Actual cursing
             "son of a": "son of a mother fucking bitch. You deserve to be burned to crisps",
