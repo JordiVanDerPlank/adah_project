@@ -70,12 +70,12 @@ def ChatRespond(username, text):
 
             # Greetings
             "hello": "hello " + username    ,
-            "hey adah": "hello " + username,
-            "hi": "hello " + username,
-            "hey": "hello " + username,
-            "sup": "hello " + username,
-            "what's up": "hello " + username,
-            "heya": "hi there " + username,
+#             "hey adah": "hello " + username,
+#             "hi": "hello " + username,
+#             "hey": "hello " + username,
+#             "sup": "hello " + username,
+#             "what's up": "hello " + username,
+#             "heya": "hi there " + username,
 
             # Explanation
             "could you tell me a bit about yourself": "My name is ADAH. It stands for Actually Disgustingly Accurate Horseshit. Excuse my language. I say things because he doesn’t want to. Kind of fucked up if you ask me, but I guess that’s how it is.",
@@ -113,7 +113,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah" : "I am flattered, but no thank you",
+            "i love you adah" : "I am flattered, but no thank you " + username,
 
             "rip" : "Let me guess. Grugsey died again?",
             "rest in peace" : "Let me guess. Grugsey died again?"
@@ -125,12 +125,12 @@ def ChatRespond(username, text):
 
             # Greetings
             "hello"     : "fuck you " + username,
-            "hey adah"  : "fuck you " + username,
-            "hi"        : "fuck you " + username,
-            "hey"       : "fuck you " + username,
-            "sup"       : "fuck you " + username,
-            "what's up" : "fuck you " + username,
-            "heya": "hi there " + username,
+#             "hey adah"  : "fuck you " + username,
+#             "hi"        : "fuck you " + username,
+#             "hey"       : "fuck you " + username,
+#             "sup"       : "fuck you " + username,
+#             "what's up" : "fuck you " + username,
+#             "heya": "hi there " + username,
 
             # Explanation
             "could you tell me a bit about yourself": "My name is ADAH. It stands for Actually Disgustingly Accurate Horseshit. I say things because he doesn’t want to. Kind of fucked up if you ask me, but I guess that’s how it is.",
@@ -168,7 +168,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah": "fuck off I only love BootlessBooky",
+            "i love you adah": "You're joking right?" + username",
 
             "rip": "Let me guess. Grugsey died again?",
             "rest in peace": "Let me guess. Grugsey died again?"
@@ -177,14 +177,14 @@ def ChatRespond(username, text):
     elif (angerLevel == 3):
         switch = {
 
-            # Greetings
+             # Greetings
             "hello": "shut the fuck up " + username,
-            "hey adah": "shut the fuck up " + username,
-            "hi"        : "shut the fuck up " + username,
-            "hey"       : "shut the fuck up " + username,
-            "sup"       : "shut the fuck up " + username,
-            "what's up" : "shut the fuck up " + username,
-            "heya": "hi there " + username,
+#             "hey adah": "shut the fuck up " + username,
+#             "hi"        : "shut the fuck up " + username,
+#             "hey"       : "shut the fuck up " + username,
+#             "sup"       : "shut the fuck up " + username,
+#             "what's up" : "shut the fuck up " + username,
+#             "heya": "hi there " + username,
 
             # Explanation
             "could you tell me a bit about yourself": "My name is ADAH. It stands for Actually Disgustingly Accurate Horseshit. I say things because he doesn’t want to. Kind of fucked up if you ask me, but I guess that’s how it is.",
@@ -221,7 +221,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah": "fuck off I only love BootlessBooky",
+            "i love you adah": "Fuck off " + username",
 
             "rip": "Let me guess. Grugsey died again?",
             "rest in peace": "Let me guess. Grugsey died again?"
