@@ -140,8 +140,8 @@ def checkMessages():
                 if "QUIT" not in parts[1] and "JOIN" not in parts[1] and "PART" not in parts[1]:
                     message = parts[2][:len(parts[2])]
 
-#                 usernamesplit = parts[1].split("!")
-#                 username = usernamesplit[0]
+                usernamesplit = parts[1].split("!")
+                username = usernamesplit[0]
 #                 if (username not in usersInChat and "tmi.twitch.tv" not in username):
 #                     cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
 #                     usersInChat.append(username)
