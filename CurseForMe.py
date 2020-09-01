@@ -142,10 +142,17 @@ def checkMessages():
 
                 usernamesplit = parts[1].split("!")
                 username = usernamesplit[0]
-#                 if (username not in usersInChat and "tmi.twitch.tv" not in username):
-#                     cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
-#                     usersInChat.append(username)
+                
+                if ";subscriber=" in username:
+                    message = parts[3][:len(parts[2])]
+                    usernamesplit = parts[2].split("!")
+                    username = usernamesplit[0]
 
+                if (username not in usersInChat and "tmi.twitch.tv" not in username):
+                    cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
+                    print(username)
+                    usersInChat.append(username)
+                
                 # seperate all tag information
                 badgeInfoSplit = line.split(";")
                 for i in badgeInfoSplit:
