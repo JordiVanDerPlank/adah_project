@@ -38,6 +38,7 @@ def showAdah():
     if btnText.get() == "Disconnect":
         global connected
         connected = False
+        btnOAuth.pack(side='right', padx="5")
         nickNameLabelDir.pack(side='left')
         nickName.pack(side='left')
         authLabelDir.pack(side='left')
@@ -186,6 +187,7 @@ def checkMessages():
                     auth.pack_forget()
                     nickName.pack_forget()
                     nickNameLabelDir.pack_forget()
+                    btnOAuth.pack_forget()
                     btnText.set("Disconnect")
 
                 message = message.lower()
