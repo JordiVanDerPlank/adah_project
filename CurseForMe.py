@@ -148,7 +148,7 @@ def checkMessages():
                     usernamesplit = parts[2].split("!")
                     username = usernamesplit[0]
 
-                if (username not in usersInChat and "tmi.twitch.tv" not in username):
+                if (username not in usersInChat and "tmi.twitch.tv" not in username and username != NICK):
                     cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
                     print(username)
                     usersInChat.append(username)
