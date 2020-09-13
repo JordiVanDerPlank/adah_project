@@ -19,7 +19,7 @@ gui = Tk()
 gui.geometry("640x480")
 gui.configure(bg="#18181b")
 app = Screen(master=gui)
-app.master.title("ADAH v1.4")
+app.master.title("ADAH v1.41")
 app.configure(bg="#18181b")
 
 # STOP PROGRAM WHEN RED CROSS IS PRESSED
@@ -35,21 +35,22 @@ global connected
 
 
 def showAdah():
-    if btnText.get() == "Disconnect":
-        global connected
-        connected = False
-        btnOAuth.pack(side='right', padx="5")
-        nickNameLabelDir.pack(side='left')
-        nickName.pack(side='left')
-        authLabelDir.pack(side='left')
-        auth.pack(side='left')
+    if btnText.get() == "Quit":
+        sys.exit()
+#         global connected
+#         connected = False
+#         btnOAuth.pack(side='right', padx="5")
+#         nickNameLabelDir.pack(side='left')
+#         nickName.pack(side='left')
+#         authLabelDir.pack(side='left')
+#         auth.pack(side='left')
 
-        eula.delete("1.0", "end")
-        eula.insert("1.0", "Successfully disconnected!")
-        btnText.set("Connect")
-        global s
-        s = socket.socket()
-        s.close()
+#         eula.delete("1.0", "end")
+#         eula.insert("1.0", "Successfully disconnected!")
+#         btnText.set("Connect")
+#         global s
+#         s = socket.socket()
+#         s.close()
     #         # print("I am here")
     # restartFalse()
 
@@ -195,7 +196,7 @@ def checkMessages():
                     nickName.pack_forget()
                     nickNameLabelDir.pack_forget()
                     btnOAuth.pack_forget()
-                    btnText.set("Disconnect")
+                    btnText.set("Quit")
 
                 message = message.lower()
 
