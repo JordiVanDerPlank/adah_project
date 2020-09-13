@@ -36,7 +36,7 @@ global connected
 
 def showAdah():
     if btnText.get() == "Quit":
-        sys.exit()
+        sys.exit(0)
 #         global connected
 #         connected = False
 #         btnOAuth.pack(side='right', padx="5")
