@@ -135,19 +135,36 @@ def checkMessages():
                 userMod = False
                 # for line in str(s.setblocking(True)).split('\\r\\n'):
                 parts = line.split(':')
+                
                 if len(parts) < 3:
                     continue
 
                 if "QUIT" not in parts[1] and "JOIN" not in parts[1] and "PART" not in parts[1]:
                     message = parts[2][:len(parts[2])]
 
-                usernamesplit = parts[1].split("!")
+                usernamePart = 1
+
+                for idx, val in enumerate(parts):
+                    print(idx, val)
+                    if "PRIVMSG" in val:
+                        usernamePart = idx
+                        print("usernamepart = " + str(usernamePart))
+
+
+                usernamesplit = parts[usernamePart].split("!")
                 username = usernamesplit[0]
-                
-                if ";subscriber=" in username:
+
+
+
+
+                if ";subscriber=" in username or ";flags" in username:
                     message = parts[3][:len(parts[2])]
                     usernamesplit = parts[2].split("!")
                     username = usernamesplit[0]
+                    print("but I did this!")
+
+                elif "PRIVMSG" not in parts[1] and "tmi.twitch.tv" not in parts[1]:
+                    continue
 
                 if (username not in usersInChat and "tmi.twitch.tv" not in username and username != NICK):
                     cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
