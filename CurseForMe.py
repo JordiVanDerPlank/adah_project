@@ -166,7 +166,9 @@ def checkMessages():
                 elif "PRIVMSG" not in parts[1] and "tmi.twitch.tv" not in parts[1]:
                     continue
 
-                if (username not in usersInChat and "tmi.twitch.tv" not in username and username != NICK):
+                usersToIgnore = [NICK, "streamlabs", "soundalerts", "nightbot"]
+                    
+                if (username not in usersInChat and "tmi.twitch.tv" not in username and username not in usersToIgnore):
                     cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
                     print(username)
                     usersInChat.append(username)
@@ -226,7 +228,12 @@ def checkMessages():
                 if (message == "unpause" and (username == NICK or "mod" in userBadges[1])):
                     cursewords.SpeakText("I am no longer paused")
                     paused = False
+                
+                if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1])):
+                    birthdayUser = message.replace("adah happy birthday", "")
+                    cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
 
+                
                 # if subscribed:
                 # cursewords.SpeakText(username + " is subscribed to the channel")
                 # print(username + " is subscribed to the channel")
