@@ -231,6 +231,7 @@ def checkMessages():
                 
                 if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1])):
                     birthdayUser = message.replace("adah happy birthday", "")
+                    birthdayUser = birthdayUser.replace("@", "")
                     cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
 
                 
