@@ -1,4 +1,3 @@
-import GetFromWebpage as getData
 global NICK, PASS
 
 HOST = "irc.twitch.tv"
@@ -236,6 +235,7 @@ def checkMessages():
                     cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
 
                 if ("adah quote" in message):
+                    import GetFromWebpage as getData
                     quoteNumber = message.replace("adah quote", "")
                     try:
                         quoteNumber = quoteNumber.replace(" ", "")
