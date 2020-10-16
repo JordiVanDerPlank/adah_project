@@ -215,7 +215,8 @@ def checkMessages():
                     nickName.pack_forget()
                     nickNameLabelDir.pack_forget()
                     btnOAuth.pack_forget()
-                    btnText.set("Quit")
+                    btn.pack_forget()
+#                     btnText.set("Quit")
 
                 message = message.lower()
 
