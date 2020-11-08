@@ -239,7 +239,7 @@ def checkMessages():
                     cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
 
                 #say user's Streamlabs quotes!
-                if "quote" in message and "!quote" not in message:
+                if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
                     messageWithOrigin = message.partition("[")
                     print(messageWithOrigin[0])
                     cursewords.SpeakText(messageWithOrigin[0])
