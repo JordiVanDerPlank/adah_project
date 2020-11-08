@@ -231,7 +231,7 @@ def checkMessages():
                     paused = False
                     
                 if (message == "language"):
-                    cursewords.SpeakText("watch your language! " + NICK)
+                    cursewords.SpeakText("watch your language, " + NICK)
                 
                 if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1])):
                     birthdayUser = message.replace("adah happy birthday", "")
