@@ -229,6 +229,9 @@ def checkMessages():
                 if (message == "unpause" and (username == NICK or "mod" in userBadges[1])):
                     cursewords.SpeakText("I am no longer paused")
                     paused = False
+                    
+                if (message == "language"):
+                    cursewords.SpeakText("watch your language! " + NICK)
                 
                 if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1])):
                     birthdayUser = message.replace("adah happy birthday", "")
