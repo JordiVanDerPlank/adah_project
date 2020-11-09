@@ -332,29 +332,43 @@ def checkMessages():
                         # thread3 = threading.Timer(60, turnoffCooldown)
                         # thread3.start()
                         cursewords.ChatRespond(username, "hello")
-                    else:
-                        # for each trigger word/sentence
-                        for word in greetings:
-                            # does the trigger word/sentence exist in my message
-                            if (word in message and cooldownOn == False):
-                                # if the found word is shorter than 5 characters
-                                if (len(word) < 5):
-                                    # divide the message in different words and check if one of the words is the same as my word
-                                    wordsInMessage = message.split()
-                                    for currentWord in wordsInMessage:
-                                        if (currentWord == word):
-                                            cooldownOn = True
-                                            thread3 = threading.Thread(target=turnoffCooldown)
-                                            thread3.start()
-                                            cursewords.ChatRespond(username, "hello")
-                                            break
-                                        else:
-                                            continue
-                                else:
-                                    thread3 = threading.Thread(target=turnoffCooldown)
-                                    thread3.start()
-                                    cooldownOn = True
-                                    cursewords.ChatRespond(username, "hello")
+                    
+                    rockPaperScissors = ["adah rock", "adah paper", "adah scissors"]
+
+                    if message in rockPaperScissors:
+                        adahChoice = random.randint(0,2)
+                        # url = 'http://adah.theshelfman.net/rpsPlayGame.php'
+                        # myData = {'username': username, 'points': 1}
+                        # x = requests.post(url, data=myData)
+
+                        # print(x.text)
+
+                        # if player has chosen rock
+                        if message == rockPaperScissors[0]:
+                            if adahChoice == 0:
+                                cursewords.SpeakText("I also said rock, " + username + ", so we tied!")
+                            elif adahChoice == 1:
+                                cursewords.SpeakText("I said paper, " + username + ", so I won!")
+                            else:
+                                cursewords.SpeakText("I said scissors, " + username + ", so you won!")
+
+                        # if player has chosen paper
+                        elif message == rockPaperScissors[1]:
+                            if adahChoice == 0:
+                                cursewords.SpeakText("I said rock, " + username + ", so you won!")
+                            elif adahChoice == 1:
+                                cursewords.SpeakText("I also said paper, " + username + ", so we tied!")
+                            else:
+                                cursewords.SpeakText("I said scissors, " + username + ", so I won!")
+
+                        # if player has chosen scissors
+                        else:
+                            if adahChoice == 0:
+                                cursewords.SpeakText("I said rock, " + username + ", so I won!")
+                            elif adahChoice == 1:
+                                cursewords.SpeakText("I said paper, " + username + ", so you won!")
+                            else:
+                                cursewords.SpeakText("I also said scissors, " + username + ", so we tied!")
 
                     # BOOKY'S PERSONAL RESPONSES
                     if (username == "bootlessbooky"):
