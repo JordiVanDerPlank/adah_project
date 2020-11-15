@@ -166,7 +166,7 @@ def checkMessages():
                 elif "PRIVMSG" not in parts[1] and "tmi.twitch.tv" not in parts[1]:
                     continue
 
-                usersToIgnore = [NICK, "streamlabs", "soundalerts", "nightbot"]
+                usersToIgnore = [NICK, "streamlabs", "soundalerts", "nightbot", "streamcaptainbot", "grugsbot"]
                     
                 if (username not in usersInChat and "tmi.twitch.tv" not in username and username not in usersToIgnore):
                     cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
