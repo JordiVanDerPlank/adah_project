@@ -1,3 +1,18 @@
+import speech_recognition as sr
+import random
+import triggerWords
+import webbrowser
+import requests
+import numpy
+import GetFromWebpage as getData
+
+from tkinter import *
+
+# Initialize the recognizer
+r = sr.Recognizer()
+
+import socket, string, threading, cursewords, time
+
 global NICK, PASS
 
 HOST = "irc.twitch.tv"
@@ -19,7 +34,7 @@ gui = Tk()
 gui.geometry("640x480")
 gui.configure(bg="#18181b")
 app = Screen(master=gui)
-app.master.title("ADAH v1.6")
+app.master.title("ADAH v1.41")
 app.configure(bg="#18181b")
 
 # STOP PROGRAM WHEN RED CROSS IS PRESSED
@@ -37,22 +52,6 @@ global connected
 def showAdah():
     if btnText.get() == "Quit":
         sys.exit(0)
-#         global connected
-#         connected = False
-#         btnOAuth.pack(side='right', padx="5")
-#         nickNameLabelDir.pack(side='left')
-#         nickName.pack(side='left')
-#         authLabelDir.pack(side='left')
-#         auth.pack(side='left')
-
-#         eula.delete("1.0", "end")
-#         eula.insert("1.0", "Successfully disconnected!")
-#         btnText.set("Connect")
-#         global s
-#         s = socket.socket()
-#         s.close()
-    #         # print("I am here")
-    # restartFalse()
 
     else:
         if (btnText.get() != "Connect"):
@@ -106,6 +105,7 @@ global s
 global usersInChat
 usersInChat = []
 
+
 # global connected
 
 def send_message(message):
@@ -118,6 +118,9 @@ restart = False
 
 global cooldownOn
 cooldownOn = False
+
+global newUsersCounted
+newUsersCounted = 0
 
 
 def turnoffCooldown():
@@ -135,7 +138,7 @@ def checkMessages():
                 userMod = False
                 # for line in str(s.setblocking(True)).split('\\r\\n'):
                 parts = line.split(':')
-                
+
                 if len(parts) < 3:
                     continue
 
@@ -145,47 +148,55 @@ def checkMessages():
                 usernamePart = 1
 
                 for idx, val in enumerate(parts):
-                    print(idx, val)
                     if "PRIVMSG" in val:
                         usernamePart = idx
-                        print("usernamepart = " + str(usernamePart))
 
 
                 usernamesplit = parts[usernamePart].split("!")
                 username = usernamesplit[0]
 
-
+                if username == "theshelfman":
+                    username = "the shelfman"
 
 
                 if ";subscriber=" in username or ";flags" in username:
                     message = parts[3][:len(parts[2])]
                     usernamesplit = parts[2].split("!")
                     username = usernamesplit[0]
-                    print("but I did this!")
 
                 elif "PRIVMSG" not in parts[1] and "tmi.twitch.tv" not in parts[1]:
                     continue
 
+                global paused, cooldownOn, newUsersCounted
+
                 usersToIgnore = [NICK, "streamlabs", "soundalerts", "nightbot", "streamcaptainbot", "grugsbot"]
-                    
-                if (username not in usersInChat and "tmi.twitch.tv" not in username and username not in usersToIgnore):
-                    cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
-                    print(username)
+
+
+                if (NICK == "theshelfman"):
+                    usersToIgnore.append("the shelfman")
+
+                if username not in usersInChat and "tmi.twitch.tv" not in username and username not in usersToIgnore:
                     usersInChat.append(username)
-                
+                    if cooldownOn is False:
+                        cursewords.SpeakText("Hello " + username + ", welcome to the stream!")
+                        cooldownOn = True
+                        thread3 = threading.Timer(15, turnoffCooldown)
+                        thread3.start()
+                    else:
+                        newUsersCounted += 1
+                        if newUsersCounted >= 5:
+                            newUsersCounted = 0
+                            cursewords.SpeakText("Hello everybody. Welcome to the stream!")
+
                 # seperate all tag information
                 badgeInfoSplit = line.split(";")
                 for i in badgeInfoSplit:
-                    #                     # print ("badgeInfo = " + i + "\n")
                     if "mod=1" in i:
                         userMod = True
                     else:
                         userMod = False
 
                 badgeInfo = badgeInfoSplit[0].split("=")
-                # for j in badgeInfo:
-                #                 #     print ("user badge info = " + j)
-                #                 # print ("badge info length = " + str(len(badgeInfo)))
 
                 if len(badgeInfo) >= 2:
                     if "subscriber" in badgeInfo[1]:
@@ -193,14 +204,6 @@ def checkMessages():
 
                 if len(badgeInfoSplit) >= 2:
                     userBadges = badgeInfoSplit[1].split("=")
-                    # for i in userBadges:
-                #                     # print ("userbadges = " + i)
-
-                #                 # print ("user badge info = " + badgeInfo[1])
-                #                 # print ("user badge info = " + badgeInfo[0])
-                #                 # print ("badgeInfo = " + badgeInfo)
-
-                #                 # print(username + ": " + message + "badgeinfo: " + badgeInfo)
                 eula.insert("1.0", username + " : " + message + "\n")
 
                 if ("NOTICE *" in username):
@@ -216,49 +219,44 @@ def checkMessages():
                     nickNameLabelDir.pack_forget()
                     btnOAuth.pack_forget()
                     btn.pack_forget()
-#                     btnText.set("Quit")
+                    # btnText.set("Quit")
 
                 message = message.lower()
 
-                global paused, cooldownOn
 
-                if (message == "pause" and (username == NICK or "mod" in userBadges[1])):
+
+                if (message == "pause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I have been paused")
                     paused = True
 
-                if (message == "unpause" and (username == NICK or "mod" in userBadges[1])):
+                if (message == "unpause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I am no longer paused")
                     paused = False
-                    
+
                 if (message == "language"):
-                    cursewords.SpeakText("watch your language, " + NICK)
-                
-                if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1])):
+                    cursewords.SpeakText("watch your language! " + NICK)
+
+                if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     birthdayUser = message.replace("adah happy birthday", "")
                     birthdayUser = birthdayUser.replace("@", "")
                     cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
 
-                #say user's Streamlabs quotes!
+                if ("adah attack" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
+                    userToAttack = message.replace("adah attack", "")
+                    userToAttack = userToAttack.replace("@", "")
+                    cursewords.SpeakText("You think you're cool, " + userToAttack + "? You're a pathetic troll. Find a different hobby. Goodbye")
+
                 if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
                     messageWithOrigin = message.partition("[")
-                    print(messageWithOrigin[0])
                     cursewords.SpeakText(messageWithOrigin[0])
-                
-                
-                # if subscribed:
-                # cursewords.SpeakText(username + " is subscribed to the channel")
-                # print(username + " is subscribed to the channel")
 
-                ##PREDEFINED RESPONSES
-                # if message == "hey adah" or message == "hi adah" or message == "hello adah":
-                #    cursewords.SpeakText("Go fuck yourself" + username)
 
                 if (paused == False and connected):
 
                     if username.lower() == "streamlabs" and NICK == "theshelfman":
                         webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=2)
 
-                    if username.lower == "danimilkman":
+                    if username.lower == "danimilkman" and "danimilkman" not in usersInChat:
                         cursewords.SpeakText("You are a bitch, " + username)
 
                     if message == "adah go fuck yourself" or message == "go fuck yourself" or message == "adah, go fuck yourself" or message == "go fuck yourself adah" or message == "i don't like you" or message == "adah, i don't like you" or message == "i dont like you" or message == "adah, i dont like you" or message == "i don't like you adah" or message == "i don't like you adah" or message == "i don't like you, adah" or message == "i dont like you, adah":
@@ -278,7 +276,7 @@ def checkMessages():
 
                     # ANGER CONTROL BY MODS
                     if message in triggerWords.angerControl and (
-                            username == "bootlessbooky" or username == "theshelfman" or username == NICK or userMod or "mod" in
+                            username == "jake_darb" or username == "the shelfman" or username == NICK or userMod or "mod" in
                             userBadges[1]):
                         cursewords.SpeakText("Anger mode changed to " + message)
                         cursewords.SetAngerMode(message)
@@ -288,16 +286,14 @@ def checkMessages():
                             "Currently it is " + time.strftime("%I:%M", time.localtime()) + " for " + NICK)
 
                     if message == "rickroll" and NICK == "theshelfman":
-                        cursewords.SpeakText("I'm sorry, theshelfman, but " + username + " made me do this")
+                        cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
                         webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
 
                     sayBackwardTriggers = ["backwards", "say", "backwards?"]
                     countWordsInMesage = 0
                     listWordsInMessage = message.split()
                     for word in listWordsInMessage:
-                        #                         # print (word)
                         if word in sayBackwardTriggers:
-                            #                             # print("count: " + str(countWordsInMesage))
                             countWordsInMesage += 1
                     if countWordsInMesage > 1 and ("backwards" in message or "backwards?" in message):
                         list = message.split()
@@ -306,33 +302,24 @@ def checkMessages():
                         toDelete = ["backwards", "?", "backwards?", "say"]
 
                         for word in list:
-                            #                             # print ("current word: " + word)
                             if word not in toDelete:
                                 newList.append(word)
 
                         wordsFlipped = []
-                        # wordToFlip = newList[0]
-                        # strLength = len(wordToFlip)
-                        # slicedString = wordToFlip[strLength::-1]
-                        # cursewords.SpeakText(wordToFlip + "said back words, is " + slicedString)
                         for i in newList:
                             strLength = len(i)
                             slicedString = i[strLength::-1]
                             wordsFlipped.append(slicedString)
 
-                            # print(wordsFlipped)
                         wordsFlipped = wordsFlipped[::-1]
                         cursewords.SpeakText(str(newList) + "said back words, is " + str(wordsFlipped))
 
                     greetings = ["hello adah", "hi adah", "heya adah", "hey adah", "hiya adah", "sup adah",
                                  "what's up adah", "whatsup adah", "whats up adah", "yo adah"]
-                    if message in greetings and cooldownOn == False:
-                        # cooldownOn = True
-                        # thread3 = threading.Thread(target=turnoffCooldown)
-                        # thread3 = threading.Timer(60, turnoffCooldown)
-                        # thread3.start()
+                    if message in greetings:
                         cursewords.ChatRespond(username, "hello")
-                    
+
+
                     rockPaperScissors = ["adah rock", "adah paper", "adah scissors"]
 
                     if message in rockPaperScissors:
@@ -341,7 +328,6 @@ def checkMessages():
                         # myData = {'username': username, 'points': 1}
                         # x = requests.post(url, data=myData)
 
-                        # print(x.text)
 
                         # if player has chosen rock
                         if message == rockPaperScissors[0]:
@@ -370,8 +356,10 @@ def checkMessages():
                             else:
                                 cursewords.SpeakText("I also said scissors, " + username + ", so we tied!")
 
+
+
                     # BOOKY'S PERSONAL RESPONSES
-                    if (username == "bootlessbooky"):
+                    if (username == "jake_darb"):
                         # check if message is equal to a string from the list of words
                         rdResponse = random.randint(0, 1)
                         if rdResponse == 0 and (
@@ -383,7 +371,7 @@ def checkMessages():
                                 for currentWord in wordsInMessage:
                                     if (currentWord == "rickroll" and NICK == "theshelfman"):
                                         cursewords.SpeakText(
-                                            "I'm sorry, theshelfman, but " + username + " made me do this")
+                                            "I'm sorry, the shelfman, but " + username + " made me do this")
                                         webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
                                         break
                                 # for each trigger word/sentence
@@ -409,8 +397,7 @@ def checkMessages():
                                 wordsInMessage = message.split()
                                 for currentWord in wordsInMessage:
                                     if (currentWord == "rickroll" and NICK == "theshelfman"):
-                                        cursewords.SpeakText(
-                                            "I'm sorry, theshelfman, but " + username + " made me do this")
+                                        cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
                                         webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
                                         break
                                 # for each trigger word/sentence
@@ -427,7 +414,7 @@ def checkMessages():
                                                     break
                                                 elif (currentWord == "rickroll"):
                                                     cursewords.SpeakText(
-                                                        "I'm sorry, theshelfman, but " + username + " made me do this")
+                                                        "I'm sorry, the shelfman, but " + username + " made me do this")
                                                     webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                                                                     new=1)
                                                     break
@@ -440,32 +427,7 @@ def checkMessages():
                     else:
                         if message in triggerWords.chatWordsToActivate and username.lower() != "streamlabs":
                             cursewords.ChatRespond(username, message)
-                        # else:
-                        #     if username.lower() != "streamlabs":
-                        #         wordsInMessage = message.split()
-                        #         for currentWord in wordsInMessage:
-                        #             if (currentWord == "rickroll"):
-                        #                 cursewords.SpeakText("I'm sorry, theshelfman, but " + username + " made me do this")
-                        #                 webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
-                        #                 break
-                        #         # for each trigger word/sentence
-                        #         for word in triggerWords.chatWordsToActivate:
-                        #             # does the trigger word/sentence exist in my message
-                        #             if (word in message):
-                        #                 # if the found word is shorter than 5 characters
-                        #                 if (len(word) < 5):
-                        #                     # divide the message in different words and check if one of the words is the same as my word
-                        #                     wordsInMessage = message.split()
-                        #                     for currentWord in wordsInMessage:
-                        #                         if (currentWord == word):
-                        #                             cursewords.ChatRespond(username, word)
-                        #                             break
-                        #                         else:
-                        #                             continue
-                        #                 else:
-                        #                     cursewords.ChatRespond(username, word)
         except:
-            # print ("There was an error, returning now...")
             eula.insert("1.0", "There was an error, returning now...\n")
             threading.Timer(2.0, clearTextBox).start()
             return
@@ -482,7 +444,6 @@ def clearTextBox():
 
 
 def restartTrue():
-    # print ("Restarting now!")
     eula.insert("1.0", "Restarting now!\n")
     s.send(bytes("PRIVMSG #" + NICK + " : \r\n", "UTF-8"))
     restart = True
@@ -527,7 +488,6 @@ def firstStart():
 
 
     except Exception as e:
-        # print("something went wrong, couldn't connect")
         eula.insert("1.0", "Something went wrong, couldn't connect")
 
 
