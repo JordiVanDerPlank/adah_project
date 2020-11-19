@@ -34,7 +34,7 @@ gui = Tk()
 gui.geometry("640x480")
 gui.configure(bg="#18181b")
 app = Screen(master=gui)
-app.master.title("ADAH v1.41")
+app.master.title("ADAH v1.7")
 app.configure(bg="#18181b")
 
 # STOP PROGRAM WHEN RED CROSS IS PRESSED
