@@ -4,7 +4,7 @@ import triggerWords
 import webbrowser
 import requests
 import numpy
-import GetFromWebpage as getData
+# import GetFromWebpage as getData
 
 from tkinter import *
 
