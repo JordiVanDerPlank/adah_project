@@ -37,7 +37,6 @@ chatWordsToActivate = [
     "how does she work",
 
     # Generic
-    "perfect",
     "the sword was cool",
     "who is the best streamer?",
     "who is the best streamer",
