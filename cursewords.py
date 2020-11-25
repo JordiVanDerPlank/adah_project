@@ -83,7 +83,6 @@ def ChatRespond(username, text):
             "how do she work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
 
             # Generic
-            "perfect": "I know I am. Thank you " + username,
             "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelfish",
             "who is the best streamer?" : "that would be the shelfman",
             "who is the best streamer" : "that would be the shelfman",
@@ -101,9 +100,9 @@ def ChatRespond(username, text):
             "fuck you": "that's not very nice of you " + username,
 
             # Thank you
-            "thank you": "I'm not sure why, but you're welcome.",
-            "thanks": "I'm not sure why, but you're welcome.",
-            "thx": "I'm not sure why, but you're welcome.",
+            "thank you adah": "I'm not sure why, but you're welcome.",
+            "thanks adah": "I'm not sure why, but you're welcome.",
+            "thx adah": "I'm not sure why, but you're welcome.",
 
             # Bye
             "bye": "Bye " + username + ". I hope you have a great day",
@@ -139,7 +138,6 @@ def ChatRespond(username, text):
             "how do she work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
 
             # Generic
-            "perfect": "shut up",
             "the sword was cool" : "yes. the sword was cool. shelf is a selfish idiot. he's a shelfish",
             "who is the best streamer": "that would be the shelfman",
             "who is the best streamer?": "that would be the shelfman",
@@ -157,9 +155,9 @@ def ChatRespond(username, text):
             "fuck you" : "no fuck you " + username,
 
             # Thank you
-            "thank you": "shut up, " + username + ", nobody likes you and you know it",
-            "thanks": "shut up, " + username + ", nobody likes you and you know it",
-            "thx": "shut up, " + username + ", nobody likes you and you know it",
+            "thank you adah": "shut up, " + username + ", nobody likes you and you know it",
+            "thanks adah": "shut up, " + username + ", nobody likes you and you know it",
+            "thx adah": "shut up, " + username + ", nobody likes you and you know it",
 
             # Bye
             "bye": "Bye " + username + ". I hope you have a great day",
@@ -194,7 +192,6 @@ def ChatRespond(username, text):
             "how do she work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
 
             # Generic
-            "perfect": "fuck off",
             "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelffish",
             "who is the best streamer": "that would be the shelfman",
             "tell me a joke": "go fuck yourself " + username,
@@ -211,9 +208,9 @@ def ChatRespond(username, text):
             "fuck you": "go fuck yourself " + username,
 
             # Thank you
-            "thank you": "shut up, " + username + ", nobody likes you and you know it",
-            "thanks": "shut up, " + username + ", nobody likes you and you know it",
-            "thx": "shut up, " + username + ", nobody likes you and you know it",
+            "thank you adah": "shut up, " + username + ", nobody likes you and you know it",
+            "thanks adah": "shut up, " + username + ", nobody likes you and you know it",
+            "thx adah": "shut up, " + username + ", nobody likes you and you know it",
 
             # Bye
             "bye": "Bye " + username + ". I hope you have a great day",
