@@ -55,9 +55,9 @@ chatWordsToActivate = [
     "fuck you",
 
     # Thank you
-    "thank you",
-    "thanks",
-    "thx",
+    "thank you adah",
+    "thanks adah",
+    "thx adah",
 
     # Bye
     "bye",
