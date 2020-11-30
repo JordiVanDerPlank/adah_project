@@ -113,10 +113,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah" : "I am flattered, but no thank you " + username,
-
-            "rip" : "Let me guess. Grugsey died again?",
-            "rest in peace" : "Let me guess. Grugsey died again?"
+            "i love you adah" : "I am flattered, but no thank you " + username
         }
 
 
@@ -168,10 +165,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah": "You're joking right?" + username,
-
-            "rip": "Let me guess. Grugsey died again?",
-            "rest in peace": "Let me guess. Grugsey died again?"
+            "i love you adah": "You're joking right?" + username
         }
 
     elif (angerLevel == 3):
@@ -221,10 +215,7 @@ def ChatRespond(username, text):
             "peace": "Bye " + username + ". I hope you have a great day",
 
             # Love
-            "i love you adah": "Fuck off " + username,
-
-            "rip": "Let me guess. Grugsey died again?",
-            "rest in peace": "Let me guess. Grugsey died again?"
+            "i love you adah": "Fuck off " + username
 
         }
     else:
@@ -284,10 +275,7 @@ def BookyRespond(username, text):
         "peace": "Bye " + username + ". I hope you have a great day",
 
         # Love
-        "i love you adah": "I love you too, but don't tell your girlfriend",
-
-        "rip": "Let me guess. Grugsey died again?",
-        "rest in peace": "Let me guess. Grugsey died again?"
+        "i love you adah": "I love you too, but don't tell your girlfriend"
     }
     SpeakText(switch.get(text, "Something went wrong"))
 
