@@ -222,8 +222,8 @@ def checkMessages():
                     # btnText.set("Quit")
 
                 message = message.lower()
-
-
+    
+                
 
                 if (message == "pause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I have been paused")
@@ -235,6 +235,9 @@ def checkMessages():
 
                 if (message == "language"):
                     cursewords.SpeakText("watch your language! " + NICK)
+                    
+                if (message == "rip" or message == "rest in peace"):
+                    cursewords.SpeakText("Let me guess. " + NICK + " died again?")
 
                 if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     birthdayUser = message.replace("adah happy birthday", "")
