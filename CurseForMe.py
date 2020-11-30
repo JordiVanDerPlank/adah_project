@@ -232,27 +232,7 @@ def checkMessages():
                 if (message == "unpause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I am no longer paused")
                     paused = False
-
-                if (message == "language"):
-                    cursewords.SpeakText("watch your language! " + NICK)
                     
-                if (message == "rip" or message == "rest in peace"):
-                    cursewords.SpeakText("Let me guess. " + NICK + " died again?")
-
-                if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
-                    birthdayUser = message.replace("adah happy birthday", "")
-                    birthdayUser = birthdayUser.replace("@", "")
-                    cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
-
-                if ("adah attack" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
-                    userToAttack = message.replace("adah attack", "")
-                    userToAttack = userToAttack.replace("@", "")
-                    cursewords.SpeakText("You think you're cool, " + userToAttack + "? You're a pathetic troll. Find a different hobby. Goodbye")
-
-                if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
-                    messageWithOrigin = message.partition("[")
-                    cursewords.SpeakText(messageWithOrigin[0])
-
 
                 if (paused == False and connected):
 
@@ -277,6 +257,31 @@ def checkMessages():
                         if (cursewords.angerLevel == 3):
                             cursewords.SpeakText("Stop being such a kiss ass " + username)
 
+                    if (message == "language"):
+                    cursewords.SpeakText("watch your language! " + NICK)
+                    
+                    if (message == "rip" or message == "rest in peace"):
+                        cursewords.SpeakText("Let me guess. " + NICK + " died again?")
+
+                    if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
+                        birthdayUser = message.replace("adah happy birthday", "")
+                        birthdayUser = birthdayUser.replace("@", "")
+                        cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
+
+                    if ("adah attack" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
+                        userToAttack = message.replace("adah attack", "")
+                        userToAttack = userToAttack.replace("@", "")
+                        cursewords.SpeakText("You think you're cool, " + userToAttack + "? You're a pathetic troll. Find a different hobby. Goodbye")
+
+                    if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
+                        messageWithOrigin = message.partition("[")
+                        cursewords.SpeakText(messageWithOrigin[0])
+                        
+                    
+                    if message == "karma" and cursewords.angerlevel != 1:
+                        cursewords.SpeakText("smells like karma, bitch!")
+                            
+                            
                     # ANGER CONTROL BY MODS
                     if message in triggerWords.angerControl and (
                             username == "jake_darb" or username == "the shelfman" or username == NICK or userMod or "mod" in
