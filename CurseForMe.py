@@ -279,7 +279,7 @@ def checkMessages():
                         
                     
                     if message == "karma":
-                        cursewords.SpeakText("smells like karma to me bitch!")
+                        cursewords.SpeakText("smells like karma to me, bitch!")
                             
                             
                     # ANGER CONTROL BY MODS
