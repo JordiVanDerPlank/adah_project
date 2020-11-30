@@ -278,7 +278,7 @@ def checkMessages():
                         cursewords.SpeakText(messageWithOrigin[0])
                         
                     
-                    if message == "karma" and cursewords.angerlevel != 1:
+                    if message == "karma":
                         cursewords.SpeakText("smells like karma, bitch!")
                             
                             
