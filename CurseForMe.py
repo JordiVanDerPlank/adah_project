@@ -258,7 +258,7 @@ def checkMessages():
                             cursewords.SpeakText("Stop being such a kiss ass " + username)
 
                     if (message == "language"):
-                    cursewords.SpeakText("watch your language! " + NICK)
+                        cursewords.SpeakText("watch your language! " + NICK)
                     
                     if (message == "rip" or message == "rest in peace"):
                         cursewords.SpeakText("Let me guess. " + NICK + " died again?")
