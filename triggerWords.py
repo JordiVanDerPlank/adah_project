@@ -68,11 +68,7 @@ chatWordsToActivate = [
     "peace",
 
     # Love
-    "i love you adah",
-
-    # RIP
-    "rip",
-    "rest in peace"
+    "i love you adah"
 
 ]
 
