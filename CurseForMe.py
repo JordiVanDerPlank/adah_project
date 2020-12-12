@@ -420,12 +420,6 @@ def checkMessages():
                                                 if (currentWord == word):
                                                     cursewords.BookyRespond(username, word)
                                                     break
-                                                elif (currentWord == "rickroll"):
-                                                    cursewords.SpeakText(
-                                                        "I'm sorry, the shelfman, but " + username + " made me do this")
-                                                    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                                                                    new=1)
-                                                    break
                                                 else:
                                                     continue
                                         else:
