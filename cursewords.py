@@ -84,8 +84,6 @@ def ChatRespond(username, text):
 
             # Generic
             "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelfish",
-            "who is the best streamer?" : "that would be the shelfman",
-            "who is the best streamer" : "that would be the shelfman",
             "tell me a joke" : "What kind of key doesn't open a lock?                           A monkey",
             "guess who's back" : "Guess who's back?     Back again.     " + username + "is back. Tell a friend",
 
@@ -136,8 +134,6 @@ def ChatRespond(username, text):
 
             # Generic
             "the sword was cool" : "yes. the sword was cool. shelf is a selfish idiot. he's a shelfish",
-            "who is the best streamer": "that would be the shelfman",
-            "who is the best streamer?": "that would be the shelfman",
             "tell me a joke": "your life is a joke     " + username,
             "guess who's back" : "Guess who's back?     Back again.     " + username + "is back. Tell a friend",
 
@@ -187,7 +183,6 @@ def ChatRespond(username, text):
 
             # Generic
             "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelffish",
-            "who is the best streamer": "that would be the shelfman",
             "tell me a joke": "go fuck yourself " + username,
             "guess who's back" : "Guess who's back?     Back again.     " + username + "is back. Tell a friend",
 
@@ -249,8 +244,6 @@ def BookyRespond(username, text):
         # Generic
         "perfect": "no you",
         "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelfish",
-        "who is the best streamer": "that would be the shelfman",
-        "who is the best streamer?": "that would be the shelfman",
         "i hate myself": "don't worry, I hate you too",
 
         # Actual cursing
