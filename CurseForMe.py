@@ -260,7 +260,7 @@ def checkMessages():
                     if (message == "language"):
                         cursewords.SpeakText("watch your language! " + NICK)
                         
-                    if (message == "who is the best streamer?"):
+                    if ("who is the best streamer" in message):
                         cursewords.SpeakText("that would be " + NICK)
                     
                     if (message == "rip" or message == "rest in peace"):
@@ -377,57 +377,10 @@ def checkMessages():
                                 message != "i love you" and message != "i love you adah" and message != "i love you, adah"):
                             if message in triggerWords.chatWordsToActivate:
                                 cursewords.ChatRespond(username, message)
-                            else:
-                                wordsInMessage = message.split()
-                                for currentWord in wordsInMessage:
-                                    if (currentWord == "rickroll" and NICK == "theshelfman"):
-                                        cursewords.SpeakText(
-                                            "I'm sorry, the shelfman, but " + username + " made me do this")
-                                        webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
-                                        break
-                                # for each trigger word/sentence
-                                for word in triggerWords.chatWordsToActivate:
-                                    # does the trigger word/sentence exist in my message
-                                    if (word in message):
-                                        # if the found word is shorter than 5 characters
-                                        if (len(word) < 5):
-                                            # divide the message in different words and check if one of the words is the same as my word
-                                            wordsInMessage = message.split()
-                                            for currentWord in wordsInMessage:
-                                                if (currentWord == word):
-                                                    cursewords.ChatRespond(username, word)
-                                                    break
-                                                else:
-                                                    continue
-                                        else:
-                                            cursewords.ChatRespond(username, word)
                         else:
                             if message in triggerWords.chatWordsToActivate:
                                 cursewords.BookyRespond(username, message)
-                            else:
-                                wordsInMessage = message.split()
-                                for currentWord in wordsInMessage:
-                                    if (currentWord == "rickroll" and NICK == "theshelfman"):
-                                        cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
-                                        webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
-                                        break
-                                # for each trigger word/sentence
-                                for word in triggerWords.chatWordsToActivate:
-                                    # does the trigger word/sentence exist in my message
-                                    if (word in message):
-                                        # if the found word is shorter than 5 characters
-                                        if (len(word) < 5):
-                                            # divide the message in different words and check if one of the words is the same as my word
-                                            wordsInMessage = message.split()
-                                            for currentWord in wordsInMessage:
-                                                if (currentWord == word):
-                                                    cursewords.BookyRespond(username, word)
-                                                    break
-                                                else:
-                                                    continue
-                                        else:
-                                            cursewords.BookyRespond(username, word)
-
+                            
                     # EVERYONE ELSE'S RESPONSES
                     else:
                         if message in triggerWords.chatWordsToActivate and username.lower() != "streamlabs":
