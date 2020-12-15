@@ -38,8 +38,6 @@ chatWordsToActivate = [
 
     # Generic
     "the sword was cool",
-    "who is the best streamer?",
-    "who is the best streamer",
     "i hate myself",
     "tell me a joke",
     "guess who's back",
