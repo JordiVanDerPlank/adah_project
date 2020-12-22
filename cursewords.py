@@ -78,7 +78,7 @@ def ChatRespond(username, text):
 #             "heya": "hi there " + username,
 
             # Explanation
-            "could you tell me a bit about yourself": "My name is ADAH. It stands for Actually Disgustingly Accurate Horsecrap. Excuse my language. I say things because he doesn’t want to. Kind of fucked up if you ask me, but I guess that’s how it is.",
+            "could you tell me a bit about yourself": "My name is ADAH. It stands for Actually Disgustingly Accurate Horsecrap. Excuse my language. I say things because he doesn’t want to. Kind of messed up if you ask me, but I guess that’s how it is.",
             "how do you work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
             "how do she work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
 
