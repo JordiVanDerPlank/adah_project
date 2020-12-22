@@ -370,7 +370,7 @@ def checkMessages():
 
 
                     # BOOKY'S PERSONAL RESPONSES
-                    if (username == "jake_darb"):
+                    if (username == "booky_username"):
                         # check if message is equal to a string from the list of words
                         rdResponse = random.randint(0, 1)
                         if rdResponse == 0 and (
