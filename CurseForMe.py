@@ -260,6 +260,9 @@ def checkMessages():
                     if (message == "language"):
                         cursewords.SpeakText("watch your language! " + NICK)
                         
+                    if (message == "!lurk" or message == "lurking"):
+                        cursewords.SpeakText("Happy lurking " + username)
+                        
                     if ("who is the best streamer" in message):
                         cursewords.SpeakText("that would be " + NICK)
                     
