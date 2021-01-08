@@ -349,26 +349,48 @@ def checkMessages():
                                 cursewords.SpeakText("I also said rock, " + username + ", so we tied!")
                             elif adahChoice == 1:
                                 cursewords.SpeakText("I said paper, " + username + ", so I won!")
+                                requests.get(
+                                    "http://adah.theshelfman.net/rpsAddPoints.php?username=" + username + "&pointsToAdd=-1")
                             else:
                                 cursewords.SpeakText("I said scissors, " + username + ", so you won!")
+                                requests.get(
+                                    "http://adah.theshelfman.net/rpsAddPoints.php?username=" + username + "&pointsToAdd=1")
 
                         # if player has chosen paper
                         elif message == rockPaperScissors[1]:
                             if adahChoice == 0:
                                 cursewords.SpeakText("I said rock, " + username + ", so you won!")
+                                requests.get(
+                                    "http://adah.theshelfman.net/rpsAddPoints.php?username=" + username + "&pointsToAdd=1")
                             elif adahChoice == 1:
                                 cursewords.SpeakText("I also said paper, " + username + ", so we tied!")
                             else:
                                 cursewords.SpeakText("I said scissors, " + username + ", so I won!")
+                                requests.get(
+                                    "http://adah.theshelfman.net/rpsAddPoints.php?username=" + username + "&pointsToAdd=-1")
 
                         # if player has chosen scissors
                         else:
                             if adahChoice == 0:
                                 cursewords.SpeakText("I said rock, " + username + ", so I won!")
+                                requests.get(
+                                    "http://adah.theshelfman.net/rpsAddPoints.php?username=" + username + "&pointsToAdd=-1")
                             elif adahChoice == 1:
                                 cursewords.SpeakText("I said paper, " + username + ", so you won!")
+                                requests.get(
+                                    "http://adah.theshelfman.net/rpsAddPoints.php?username=" + username + "&pointsToAdd=1")
                             else:
                                 cursewords.SpeakText("I also said scissors, " + username + ", so we tied!")
+
+                    if (message == "adah rps points"):
+                        url = "http://adah.theshelfman.net/rpsGetPoints.php?username=" + username + ""
+                        req = requests.get(url)
+                        if req.status_code == requests.codes.ok:
+                            req = req.json()  # the response is a JSON
+                            print(req)
+                            cursewords.SpeakText(username + " has " + str(req) + " points.")
+                        else:
+                            print('Content was not found.')
 
 
 
