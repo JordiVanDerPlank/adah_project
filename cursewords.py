@@ -79,8 +79,8 @@ def ChatRespond(username, text):
 
             # Explanation
             "could you tell me a bit about yourself": "My name is ADAH. It stands for Actually Disgustingly Accurate Horsecrap. Excuse my language. I say things because he doesn’t want to. Kind of messed up if you ask me, but I guess that’s how it is.",
-            "how do you work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
-            "how do she work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
+            #"how do you work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
+            #"how do she work": "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.",
 
             # Generic
             "the sword was cool": "yes. the sword was cool. shelf is a selfish idiot. he's a shelfish",
