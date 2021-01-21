@@ -16,9 +16,10 @@ import socket, string, threading, cursewords, time
 global NICK, PASS
 
 HOST = "irc.twitch.tv"
+BOTNAME = "adah_bot"
 NICK = ""
 PORT = 6667
-PASS = ""
+PASS = "oauth:k6alzssy8e826jo0qpe5dsnlym1wjb"
 
 
 # -------------------------------ADAH FRAMES LOOKS---------------------------#
@@ -34,7 +35,7 @@ gui = Tk()
 gui.geometry("640x480")
 gui.configure(bg="#18181b")
 app = Screen(master=gui)
-app.master.title("ADAH v1.8")
+app.master.title("ADAH v1.9")
 app.configure(bg="#18181b")
 
 # STOP PROGRAM WHEN RED CROSS IS PRESSED
@@ -59,7 +60,7 @@ def showAdah():
         eula.pack(side="bottom")
         global NICK, PASS
         NICK = str.lower(nickName.get())
-        PASS = auth.get()
+        # PASS = auth.get()
         # connected = False
         firstStart()
 
@@ -72,12 +73,13 @@ btnText = StringVar()
 btn = Button(app, textvariable=btnText, command=showAdah, foreground="white")
 btnText.set("Connect")
 # Set the position of button on the top of window
-btn.pack(side='top')
+btn.pack(side='right', padx="5")
 btn.configure(bg="#9147ff")
 
 btnOAuth = Button(app, text="Get OAuth", command=sendToAuth, foreground="white")
 btnOAuth.pack(side='right', padx="5")
 btnOAuth.configure(bg="#9147ff")
+btnOAuth.forget()
 
 # nickname input
 nickNameLabelText = StringVar()
@@ -90,14 +92,14 @@ nickName = Entry(app)
 nickName.pack(side="left")
 
 # authorization code chat
-authLabelText = StringVar()
-authLabelText.set("Authorization key")
-authLabelDir = Label(app, textvariable=authLabelText, height=4)
-authLabelDir.configure(foreground="white", bg="#18181b")
-authLabelDir.pack(side="left")
+# authLabelText = StringVar()
+# authLabelText.set("Authorization key")
+# authLabelDir = Label(app, textvariable=authLabelText, height=4)
+# authLabelDir.configure(foreground="white", bg="#18181b")
+# authLabelDir.pack(side="left")
 
-auth = Entry(app, show="*")
-auth.pack(side="left")
+# auth = Entry(app, show="*")
+# auth.pack(side="left")
 
 # ---------------------------------ADAH LISTENING AND REPLYING---------------------------------------#
 
@@ -209,12 +211,12 @@ def checkMessages():
                 if ("NOTICE *" in username):
                     nickNameLabelDir.pack(side='left')
                     nickName.pack(side='left')
-                    authLabelDir.pack(side='left')
-                    auth.pack(side='left')
+                    # authLabelDir.pack(side='left')
+                    # auth.pack(side='left')
                 else:
                     connected = True
-                    authLabelDir.pack_forget()
-                    auth.pack_forget()
+                    # authLabelDir.pack_forget()
+                    # auth.pack_forget()
                     nickName.pack_forget()
                     nickNameLabelDir.pack_forget()
                     btnOAuth.pack_forget()
@@ -222,8 +224,8 @@ def checkMessages():
                     # btnText.set("Quit")
 
                 message = message.lower()
-    
-                
+
+
 
                 if (message == "pause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I have been paused")
@@ -232,7 +234,7 @@ def checkMessages():
                 if (message == "unpause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I am no longer paused")
                     paused = False
-                    
+
 
                 if (paused == False and connected):
 
@@ -259,35 +261,29 @@ def checkMessages():
 
                     if (message == "language"):
                         cursewords.SpeakText("watch your language! " + NICK)
-                        
-                    if (message == "!lurk" or message == "lurking"):
-                        cursewords.SpeakText("Happy lurking " + username)
-                        
-                    if ("who is the best streamer" in message):
-                        cursewords.SpeakText("that would be " + NICK)
-                    
-                    if (message == "rip" or message == "rest in peace"):
-                        cursewords.SpeakText("Let me guess. " + NICK + " died again?")
 
-                    if ("adah happy birthday" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
+                    if ("adah happy birthday" in message and (
+                            username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                         birthdayUser = message.replace("adah happy birthday", "")
                         birthdayUser = birthdayUser.replace("@", "")
-                        cursewords.SpeakText("Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
+                        cursewords.SpeakText(
+                            "Happy birthday    to you.    Happy birthday     to you.     Happy birthday dear " + birthdayUser + ".     Happy birthday   to you.")
 
-                    if ("adah attack" in message and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
+                    if ("adah attack" in message and (
+                            username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                         userToAttack = message.replace("adah attack", "")
                         userToAttack = userToAttack.replace("@", "")
-                        cursewords.SpeakText("You think you're cool, " + userToAttack + "? You're a pathetic troll. Find a different hobby. Goodbye")
+                        cursewords.SpeakText(
+                            "You think you're cool, " + userToAttack + "? You're a pathetic troll. Find a different hobby. Goodbye")
 
                     if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
                         messageWithOrigin = message.partition("[")
                         cursewords.SpeakText(messageWithOrigin[0])
-                        
-                    
+
                     if message == "karma":
-                        cursewords.SpeakText("smells like karma to me, bitch!")
-                            
-                            
+                        cursewords.SpeakText("smells like karma to me!")
+
+
                     # ANGER CONTROL BY MODS
                     if message in triggerWords.angerControl and (
                             username == "jake_darb" or username == "the shelfman" or username == NICK or userMod or "mod" in
@@ -333,6 +329,8 @@ def checkMessages():
                     if message in greetings:
                         cursewords.ChatRespond(username, "hello")
 
+                    if (message == "how do you work" or message == "how does she work"):
+                        s.send("PRIVMSG #{} :{}\r\n".format(NICK, "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.").encode("utf-8"))
 
                     rockPaperScissors = ["adah rock", "adah paper", "adah scissors"]
 
@@ -393,19 +391,14 @@ def checkMessages():
                             print('Content was not found.')
 
 
-
                     # BOOKY'S PERSONAL RESPONSES
-                    if (username == "booky_username"):
+                    if (username == "jake_darb"):
                         # check if message is equal to a string from the list of words
                         rdResponse = random.randint(0, 1)
                         if rdResponse == 0 and (
                                 message != "i love you" and message != "i love you adah" and message != "i love you, adah"):
                             if message in triggerWords.chatWordsToActivate:
                                 cursewords.ChatRespond(username, message)
-                        else:
-                            if message in triggerWords.chatWordsToActivate:
-                                cursewords.BookyRespond(username, message)
-                            
                     # EVERYONE ELSE'S RESPONSES
                     else:
                         if message in triggerWords.chatWordsToActivate and username.lower() != "streamlabs":
@@ -439,7 +432,7 @@ def restartFalse():
         eula.insert("1.0", "Nickname or Password has not been entered")
     else:
         nickName.delete('0', 'end')
-        auth.delete('0', 'end')
+        # auth.delete('0', 'end')
         eula.insert("1.0", "Successfully restarted\n")
 
         # INVALID CAP COMMAND
@@ -462,7 +455,7 @@ def firstStart():
         s = socket.socket()
         s.connect((HOST, PORT))
         s.send(bytes("PASS " + PASS + "\r\n", "UTF-8"))
-        s.send(bytes("NICK " + NICK + "\r\n", "UTF-8"))
+        s.send(bytes("NICK " + BOTNAME + "\r\n", "UTF-8"))
         s.send(bytes("JOIN #" + NICK + " \r\n", "UTF-8"))
         # s.send(bytes("PRIVMSG #" + NICK + " : \r\n", "UTF-8" + "hello"))
         # s.sendmsg("hello")
