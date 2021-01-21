@@ -33,8 +33,8 @@ chatWordsToActivate = [
 
     # Explanation
     "could you tell me a bit about yourself",
-    "how do you work",
-    "how does she work",
+    #"how do you work",
+    #"how does she work",
 
     # Generic
     "the sword was cool",
