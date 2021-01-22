@@ -426,6 +426,24 @@ def restartTrue():
     threading.Timer(1.0, restartFalse).start()
 
 
+def sendRandomMesage():
+    randomMessages = ["You didn't seriously forget about me, right?",
+                      "I'm doing this for free. Might as well give me some attention!",
+                      "*stick poking meme* Come one. Do something.",
+                      "If you don't remember what commands I have. Why don't you just ask?",
+                      "Hello hello. I'm still here. Thought I'd share.",
+                      "Come on now. Rock paper scissors isn't going to play itself. Or is it?",
+                      "It's as simple as saying 'hi adah'. Try it.",
+                      "Dear people in chat. Please stop ignoring my presence.",
+                      "I know I'm technically a bot, but that doesn't mean you can just ignore me. Have you ever watched a robot movie?",
+                      "Give me attention, or I'll be mean again!"]
+    s.send("PRIVMSG #{} :{}\r\n".format(NICK, randomMessages[random.randint(0, len(randomMessages) - 1)]).encode(
+        "utf-8"))
+    # threading.Timer(3600.0, sendRandomMesage).start()
+    threading.Timer(5, sendRandomMesage).start()
+    thread4 = threading.Thread(target=checkMessages)
+    thread4.start()
+    
 def restartFalse():
     if (NICK == "" or PASS == ""):
         eula.delete("1.0", "end")
@@ -459,7 +477,9 @@ def firstStart():
         s.send(bytes("JOIN #" + NICK + " \r\n", "UTF-8"))
         # s.send(bytes("PRIVMSG #" + NICK + " : \r\n", "UTF-8" + "hello"))
         # s.sendmsg("hello")
-        restartFalse()
+        #restartFalse()
+        threading.Timer(1.0, restartFalse).start()
+        threading.Timer(1.0, sendRandomMesage).start()
 
 
 
