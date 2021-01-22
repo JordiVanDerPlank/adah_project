@@ -439,8 +439,7 @@ def sendRandomMesage():
                       "Give me attention, or I'll be mean again!"]
     s.send("PRIVMSG #{} :{}\r\n".format(NICK, randomMessages[random.randint(0, len(randomMessages) - 1)]).encode(
         "utf-8"))
-    # threading.Timer(3600.0, sendRandomMesage).start()
-    threading.Timer(5, sendRandomMesage).start()
+    threading.Timer(3600.0, sendRandomMesage).start()
     thread4 = threading.Thread(target=checkMessages)
     thread4.start()
     
@@ -479,7 +478,7 @@ def firstStart():
         # s.sendmsg("hello")
         #restartFalse()
         threading.Timer(1.0, restartFalse).start()
-        threading.Timer(1.0, sendRandomMesage).start()
+        threading.Timer(3600.0, sendRandomMesage).start()
 
 
 
