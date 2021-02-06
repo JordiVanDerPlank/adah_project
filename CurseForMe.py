@@ -115,7 +115,7 @@ def send_message(message):
 
 
 paused = False
-
+rickrollPaused = False
 restart = False
 
 global cooldownOn
@@ -288,7 +288,12 @@ def checkMessages():
                             cursewords.SpeakText("let me guess,   the shelfman died again?")
                         else:
                             cursewords.SpeakText("let me guess,   " + NICK + " died again?")
-
+                    if message == "rickroll pause" and NICK == "theshelfman":
+                        rickrollPause = True
+                        cursewords.SpeakText("Rickrolling has temporarily been disabled")
+                    if message == "rickroll unpause" and NICK == "theshelfman":
+                        rickrollPause = True
+                        cursewords.SpeakText("Rickrolling has been enabled")
 
                     # ANGER CONTROL BY MODS
                     if message in triggerWords.angerControl and (
@@ -302,8 +307,11 @@ def checkMessages():
                             "Currently it is " + time.strftime("%I:%M", time.localtime()) + " for " + NICK)
 
                     if message == "rickroll" and NICK == "theshelfman":
-                        cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
-                        webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
+                        if rickrollPause:
+                            cursewords.SpeakText("I'm sorry, " + username + " , but rickrolling has temporarily been disabled")
+                        else:
+                            cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
+                            webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
 
                     sayBackwardTriggers = ["backwards", "say", "backwards?"]
                     countWordsInMesage = 0
