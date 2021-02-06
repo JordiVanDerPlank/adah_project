@@ -284,7 +284,7 @@ def checkMessages():
                         cursewords.SpeakText("smells like karma to me!")
                         
                     if message == "rip" or message == "rest in peace":
-                        if NICK == "theshelfman"
+                        if NICK == "theshelfman":
                             cursewords.SpeakText("let me guess,   the shelfman died again?")
                         else:
                             cursewords.SpeakText("let me guess,   " + NICK + " died again?")
