@@ -282,6 +282,9 @@ def checkMessages():
 
                     if message == "karma":
                         cursewords.SpeakText("smells like karma to me!")
+                        
+                    if message == "rip" or message == "rest in peace":
+                        cursewords.SpeakText("let me guess " + NICK + " died again?)
 
 
                     # ANGER CONTROL BY MODS
