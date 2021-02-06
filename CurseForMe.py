@@ -292,7 +292,7 @@ def checkMessages():
                         rickrollPause = True
                         cursewords.SpeakText("Rickrolling has temporarily been disabled")
                     if message == "rickroll unpause" and NICK == "theshelfman":
-                        rickrollPause = True
+                        rickrollPause = False
                         cursewords.SpeakText("Rickrolling has been enabled")
 
                     # ANGER CONTROL BY MODS
@@ -307,7 +307,7 @@ def checkMessages():
                             "Currently it is " + time.strftime("%I:%M", time.localtime()) + " for " + NICK)
 
                     if message == "rickroll" and NICK == "theshelfman":
-                        if rickrollPause:
+                        if rickrollPause == False:
                             cursewords.SpeakText("I'm sorry, " + username + " , but rickrolling has temporarily been disabled")
                         else:
                             cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
