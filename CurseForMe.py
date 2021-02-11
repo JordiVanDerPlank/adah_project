@@ -115,6 +115,7 @@ def send_message(message):
 
 
 paused = False
+global rickrollPaused
 rickrollPaused = False
 restart = False
 
@@ -138,6 +139,7 @@ def checkMessages():
             for line in str(s.recv(4096)).split('\\r\\n'):
                 subscribed = False
                 userMod = False
+                global rickrollPaused
                 # for line in str(s.setblocking(True)).split('\\r\\n'):
                 parts = line.split(':')
 
@@ -153,13 +155,11 @@ def checkMessages():
                     if "PRIVMSG" in val:
                         usernamePart = idx
 
-
                 usernamesplit = parts[usernamePart].split("!")
                 username = usernamesplit[0]
 
                 if username == "theshelfman":
                     username = "the shelfman"
-
 
                 if ";subscriber=" in username or ";flags" in username:
                     message = parts[3][:len(parts[2])]
@@ -172,7 +172,6 @@ def checkMessages():
                 global paused, cooldownOn, newUsersCounted
 
                 usersToIgnore = [NICK, "streamlabs", "soundalerts", "nightbot", "streamcaptainbot", "grugsbot"]
-
 
                 if (NICK == "theshelfman"):
                     usersToIgnore.append("the shelfman")
@@ -225,16 +224,14 @@ def checkMessages():
 
                 message = message.lower()
 
-
-
                 if (message == "pause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I have been paused")
                     paused = True
 
-                if (message == "unpause" and (username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
+                if (message == "unpause" and (
+                        username == NICK or "mod" in userBadges[1] or username == "the shelfman")):
                     cursewords.SpeakText("I am no longer paused")
                     paused = False
-
 
                 if (paused == False and connected):
 
@@ -282,17 +279,21 @@ def checkMessages():
 
                     if message == "karma":
                         cursewords.SpeakText("smells like karma to me!")
-                        
+
                     if message == "rip" or message == "rest in peace":
                         if NICK == "theshelfman":
                             cursewords.SpeakText("let me guess,   the shelfman died again?")
                         else:
                             cursewords.SpeakText("let me guess,   " + NICK + " died again?")
+
+                    if message == "!lurk":
+                        cursewords.SpeakText("happy lurking " + username)
+
                     if message == "rickroll pause" and NICK == "theshelfman":
-                        rickrollPause = True
+                        rickrollPaused = True
                         cursewords.SpeakText("Rickrolling has temporarily been disabled")
                     if message == "rickroll unpause" and NICK == "theshelfman":
-                        rickrollPause = False
+                        rickrollPaused = False
                         cursewords.SpeakText("Rickrolling has been enabled")
 
                     # ANGER CONTROL BY MODS
@@ -307,8 +308,9 @@ def checkMessages():
                             "Currently it is " + time.strftime("%I:%M", time.localtime()) + " for " + NICK)
 
                     if message == "rickroll" and NICK == "theshelfman":
-                        if rickrollPause == False:
-                            cursewords.SpeakText("I'm sorry, " + username + " , but rickrolling has temporarily been disabled")
+                        if rickrollPaused == True:
+                            cursewords.SpeakText(
+                                "I'm sorry, " + username + " , but rickrolling has temporarily been disabled")
                         else:
                             cursewords.SpeakText("I'm sorry, the shelfman, but " + username + " made me do this")
                             webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=1)
@@ -344,16 +346,17 @@ def checkMessages():
                         cursewords.ChatRespond(username, "hello")
 
                     if (message == "how do you work" or message == "how does she work"):
-                        s.send("PRIVMSG #{} :{}\r\n".format(NICK, "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.").encode("utf-8"))
+                        s.send("PRIVMSG #{} :{}\r\n".format(NICK,
+                                                            "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.").encode(
+                            "utf-8"))
 
                     rockPaperScissors = ["adah rock", "adah paper", "adah scissors"]
 
                     if message in rockPaperScissors:
-                        adahChoice = random.randint(0,2)
+                        adahChoice = random.randint(0, 2)
                         # url = 'http://adah.theshelfman.net/rpsPlayGame.php'
                         # myData = {'username': username, 'points': 1}
                         # x = requests.post(url, data=myData)
-
 
                         # if player has chosen rock
                         if message == rockPaperScissors[0]:
@@ -403,7 +406,6 @@ def checkMessages():
                             cursewords.SpeakText(username + " has " + str(req) + " points.")
                         else:
                             print('Content was not found.')
-
 
                     # BOOKY'S PERSONAL RESPONSES
                     if (username == "jake_darb"):
@@ -456,7 +458,8 @@ def sendRandomMesage():
     threading.Timer(3600.0, sendRandomMesage).start()
     thread4 = threading.Thread(target=checkMessages)
     thread4.start()
-    
+
+
 def restartFalse():
     if (NICK == "" or PASS == ""):
         eula.delete("1.0", "end")
@@ -490,7 +493,7 @@ def firstStart():
         s.send(bytes("JOIN #" + NICK + " \r\n", "UTF-8"))
         # s.send(bytes("PRIVMSG #" + NICK + " : \r\n", "UTF-8" + "hello"))
         # s.sendmsg("hello")
-        #restartFalse()
+        # restartFalse()
         threading.Timer(1.0, restartFalse).start()
         threading.Timer(3600.0, sendRandomMesage).start()
 
