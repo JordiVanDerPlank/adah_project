@@ -345,7 +345,8 @@ def checkMessages():
                     if message in greetings:
                         if username == "gameboyatron":
                             cursewords.ChatRespond("Hello " + username + "  How are you today? See that I can be nice?")
-                        cursewords.ChatRespond(username, "hello")
+                        else:
+                            cursewords.ChatRespond(username, "hello")
 
                     if (message == "how do you work" or message == "how does she work"):
                         s.send("PRIVMSG #{} :{}\r\n".format(NICK,
