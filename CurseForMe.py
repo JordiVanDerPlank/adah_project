@@ -343,7 +343,7 @@ def checkMessages():
                     greetings = ["hello adah", "hi adah", "heya adah", "hey adah", "hiya adah", "sup adah",
                                  "what's up adah", "whatsup adah", "whats up adah", "yo adah"]
                     if message in greetings:
-                        if username == "gameboyatron:
+                        if username == "gameboyatron":
                             cursewords.ChatRespond("Hello " + username ". How are you today? See that I can be nice?")
                         cursewords.ChatRespond(username, "hello")
 
