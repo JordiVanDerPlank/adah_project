@@ -275,6 +275,7 @@ def checkMessages():
 
                     if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
                         messageWithOrigin = message.partition("[")
+                        messageWithOrigin[0].replace("/", "")
                         cursewords.SpeakText(messageWithOrigin[0])
 
                     if message == "karma":
@@ -344,7 +345,7 @@ def checkMessages():
                                  "what's up adah", "whatsup adah", "whats up adah", "yo adah"]
                     if message in greetings:
                         if username == "gameboyatron":
-                            cursewords.ChatRespond("Hello " + username + "  How are you today? See that I can be nice?")
+                            cursewords.SpeakText("Hello " + username + "  How are you today? See that I can be nice?")
                         else:
                             cursewords.ChatRespond(username, "hello")
 
