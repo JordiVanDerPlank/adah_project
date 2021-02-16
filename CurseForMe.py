@@ -354,6 +354,9 @@ def checkMessages():
                                                             "I am much less complex than you may think, " + username + ". You say things. I read everything you say. And if I recognize something that I am programmed to respond to, I will.").encode(
                             "utf-8"))
 
+                    if message == "adah commands":
+                        s.send("PRIVMSG #{} :{}\r\n".format(NICK, "You can check out all my commands here: http://adah.theshelfman.net/commands.php").encode("utf-8"))
+                        
                     rockPaperScissors = ["adah rock", "adah paper", "adah scissors"]
 
                     if message in rockPaperScissors:
