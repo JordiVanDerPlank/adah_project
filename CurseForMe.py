@@ -276,6 +276,7 @@ def checkMessages():
                     if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
                         messageWithOrigin = message.partition("[")
                         messageWithOrigin[0].replace("/", "")
+                        messageWithOrigin[0].replace('"', '')
                         cursewords.SpeakText(messageWithOrigin[0])
 
                     if message == "karma":
