@@ -273,11 +273,11 @@ def checkMessages():
                         cursewords.SpeakText(
                             "You think you're cool, " + userToAttack + "? You're a pathetic troll. Find a different hobby. Goodbye")
 
-                    if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
-                        messageWithOrigin = message.partition("[")
-                        messageWithOrigin[0].replace("/", "")
-                        messageWithOrigin[0].replace('"', '')
-                        cursewords.SpeakText(messageWithOrigin[0])
+                    #if "quote" in message and "!quote" not in message and username == "streamlabs" and "successfully added" not in message:
+                        #messageWithOrigin = message.partition("[")
+                        #messageWithOrigin[0].replace("/", "")
+                        #messageWithOrigin[0].replace('"', '')
+                        #cursewords.SpeakText(messageWithOrigin[0])
 
                     if message == "karma":
                         cursewords.SpeakText("smells like karma to me!")
